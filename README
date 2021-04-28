@@ -1,0 +1,16 @@
+pip3 install blowfish
+pip3 install click
+
+go get
+go build
+
+
+$ ./onionseed.py --help
+Usage: onionseed.py [OPTIONS]
+
+Options:
+  --n INTEGER        The nth onionv3 will be generated with the given
+                     seedphrase. Default: 1
+  --seedphrase TEXT  Specifies seedphrase manually from the command-line and
+                     disables prompt.
+  --help             Show this message and exit.
