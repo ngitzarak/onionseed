@@ -11,9 +11,5 @@ Options:
                      seedphrase. Default: 1
   --seedphrase TEXT  Specifies seedphrase manually from the command-line and
                      disables prompt.
+  --salt TEXT        Choose another salt than $2b$14$8ytOrHOEmDDiPrJArDom9.
   --help             Show this message and exit.
-
-
-Thank you rdkr
-for
-oniongen-go
