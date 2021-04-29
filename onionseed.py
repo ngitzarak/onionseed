@@ -8,19 +8,24 @@ from getpass import getpass
 import base64
 import subprocess
 
+import bcrypt
+
 cipher = None
 
 @click.command()
 @click.option('--n', default=1, type=int, help="The nth onionv3 will be generated with the given seedphrase. Default: 1")
 @click.option('--seedphrase', default=None, help="Specifies seedphrase manually from the command-line and disables prompt.")
-def main(n, seedphrase):
+@click.option('--salt', default='$2b$14$8ytOrHOEmDDiPrJArDom9.', help="Choose another salt than $2b$14$8ytOrHOEmDDiPrJArDom9.")
+def main(n, seedphrase, salt):
     global cipher
     if not seedphrase:
         seedphrase = getpass("Seedphrase (4-56 bytes):")
-    cipher = blowfish.Cipher(seedphrase.encode('utf-8'))
+    hashed = hashlib.sha256(bcrypt.hashpw(seedphrase.encode('utf-8'), salt.encode('utf-8'))).digest()
+    
+    cipher = blowfish.Cipher(hashed)
     m = hashlib.sha256()
 
-    m.update(seedphrase.encode('utf-8'))
+    m.update(hashed)
     init_block = m.digest()[0:8]
     block = cipher.encrypt_block(init_block)
     i = 0

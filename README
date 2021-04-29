@@ -1,11 +1,9 @@
-pip3 install blowfish
-pip3 install click
-
-go get
-go build
+$ sudo apt-get install build-essential libffi-dev python-dev
+$ pip3 install blowfish click bcrypt
+$ go build
 
 
-$ ./onionseed.py --help
+$ python3 onionseed.py --help
 Usage: onionseed.py [OPTIONS]
 
 Options:
