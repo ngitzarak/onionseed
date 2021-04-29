@@ -14,15 +14,6 @@ import (
 	"golang.org/x/crypto/sha3"
 )
 
-/*func extrapolate(seed string, num_keys int) []byte {
-	exCmd := exec.Command("./extrapolate.py", seed, fmt.Sprintf("%d", num_keys*4))
-	b, err := exCmd.Output()
-	if err != nil {
-		panic(err)
-	}
-	return b
-}
-*/
 func generate(seed []byte) {
 
 	//reader := strings.NewReader(seed)
