@@ -19,7 +19,7 @@ cipher = None
 def main(n, seedphrase, salt):
     global cipher
     if not seedphrase:
-        seedphrase = getpass("Seedphrase (4-56 bytes):")
+        seedphrase = getpass("Seedphrase:")
     hashed = hashlib.sha256(bcrypt.hashpw(seedphrase.encode('utf-8'), salt.encode('utf-8'))).digest()
     
     cipher = blowfish.Cipher(hashed)
